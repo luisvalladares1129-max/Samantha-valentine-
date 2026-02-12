@@ -9,26 +9,30 @@
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        overflow: hidden;
+        min-height: 100vh;
         text-align: center;
         color: #fff;
+        padding: 20px 10px;
+        box-sizing: border-box;
+        overflow-y: auto;
     }
 
     .container {
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 20px;
+        padding: 20px 10px;
+        max-width: 100%;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
         animation: popIn 1s ease forwards;
+        margin: 20px 10px;
+        line-height: 1.3;
     }
 
     .news-box {
         background: rgba(255, 255, 255, 0.2);
-        padding: 20px;
+        padding: 15px;
         border-radius: 15px;
         margin: 20px auto;
         max-width: 600px;
@@ -36,21 +40,34 @@
         animation: fadeIn 2s ease forwards;
     }
 
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
     .benefits {
         margin-top: 20px;
         text-align: left;
         display: inline-block;
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     button {
-        padding: 15px 25px;
-        margin: 15px;
+        padding: 15px 20px;
+        margin: 10px 5px;
         border: none;
         border-radius: 30px;
-        font-size: 1.1rem;
+        font-size: 1rem;
         cursor: pointer;
         transition: transform 0.2s, background 0.3s;
+        width: calc(100% - 40px);
+        max-width: 300px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .btn-primary {
@@ -63,26 +80,28 @@
         color: white;
     }
 
-    button:hover {
-        transform: scale(1.1);
+    button:active {
+        transform: scale(0.98);
     }
 
     .hidden-message {
         display: none;
-        font-size: 1.8rem;
+        font-size: 1.3rem;
         margin-top: 20px;
         animation: fadeIn 1s ease forwards;
+        padding: 0 10px;
     }
 
     /* Floating hearts */
     .heart {
-        position: absolute;
+        position: fixed;
         width: 20px;
         height: 20px;
         background: red;
         transform: rotate(45deg);
         animation: float 6s linear infinite;
         opacity: 0.7;
+        z-index: 1000;
     }
 
     .heart::before,
@@ -125,12 +144,48 @@
         from { opacity: 0; }
         to { opacity: 1; }
     }
+
+    /* Desktop styles */
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        .container {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .news-box {
+            padding: 20px;
+        }
+
+        .benefits {
+            font-size: 1.1rem;
+        }
+
+        button {
+            padding: 15px 25px;
+            margin: 15px;
+            font-size: 1.1rem;
+            width: auto;
+            display: inline-block;
+        }
+
+        .hidden-message {
+            font-size: 1.8rem;
+        }
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Breaking News Samantha Has Been Selected as Luis' Valentine</h1>
+    <h1>Breaking News: Samantha Has Been Selected as Luis' Valentine</h1>
 
     <div class="news-box">
         <h2>Exclusive Report</h2>
@@ -149,10 +204,10 @@
     </div>
 
     <button class="btn-primary" onclick="accept()">I accept</button>
-    <button class="btn-secondary" onclick="accept harder()">I accept harder</button>
+    <button class="btn-secondary" onclick="accept()">I accept harder</button>
 
     <div class="hidden-message" id="message">
-        Congratulations, you are officially my Valentine forever
+        🎉 Congratulations, you are officially my Valentine forever! 💕
     </div>
 </div>
 
