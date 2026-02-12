@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samantha's Valentine Breaking News</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        overflow: hidden;
+        text-align: center;
+        color: #fff;
+    }
+
+    .container {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        animation: popIn 1s ease forwards;
+    }
+
+    .news-box {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px auto;
+        max-width: 600px;
+        backdrop-filter: blur(10px);
+        animation: fadeIn 2s ease forwards;
+    }
+
+    .benefits {
+        margin-top: 20px;
+        text-align: left;
+        display: inline-block;
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 15px 25px;
+        margin: 15px;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-primary {
+        background: #ff4e50;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #ff758c;
+        color: white;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+    .hidden-message {
+        display: none;
+        font-size: 1.8rem;
+        margin-top: 20px;
+        animation: fadeIn 1s ease forwards;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: -10px;
+        top: 0;
+    }
+
+    @keyframes float {
+        0% {
+            bottom: -10%;
+            transform: translateX(0) rotate(45deg);
+        }
+        100% {
+            bottom: 110%;
+            transform: translateX(100px) rotate(45deg);
+        }
+    }
+
+    @keyframes popIn {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Breaking News Samantha Has Been Selected as Luis' Valentine</h1>
+
+    <div class="news-box">
+        <h2>Exclusive Report</h2>
+        <p>After an intensive review process involving snacks, laughs, and unforgettable memories...</p>
+
+        <div class="benefits">
+            <strong>Benefits include:</strong>
+            <ul>
+                <li>Unlimited hugs</li>
+                <li>Random kisses</li>
+                <li>Spontaneous road trips</li>
+                <li>Gym dates</li>
+                <li>A lifetime best friend</li>
+            </ul>
+        </div>
+    </div>
+
+    <button class="btn-primary" onclick="accept()">I accept</button>
+    <button class="btn-secondary" onclick="accept harder()">I accept harder</button>
+
+    <div class="hidden-message" id="message">
+        Congratulations, you are officially my Valentine forever
+    </div>
+</div>
+
+<script>
+function accept() {
+    document.getElementById("message").style.display = "block";
+    createHearts(20);
+}
+
+function createHearts(count) {
+    for (let i = 0; i < count; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+}
+</script>
+
+</body>
+</html>
